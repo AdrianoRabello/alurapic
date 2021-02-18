@@ -8,7 +8,7 @@ import { Photo } from './../photo/photo';
 export class FilterByDescription implements PipeTransform{
 
 
-    transform(photos: Photo[], descriptionQuery:string) {
+    transform(photos: Photo[], descriptionQuery:string):Photo[] {
        
 
         descriptionQuery = descriptionQuery.trim().toLowerCase();

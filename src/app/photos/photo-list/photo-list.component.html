@@ -1,10 +1,33 @@
 
 
-<div class="text-center my-3">
-    <form action="">
-        <input type="search" class="rounded" placeholder="search" autofocus (keyup)="getFilter($event)">
-    </form>
-</div>
+<div class="container-fluid">
 
-<ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
+    <div class="text-center my-3">
+        <form action="">
+            <i aria-hidden="true" class="fa fa-search mr-2"></i>
+            <input type="search" class="rounded" placeholder="search" autofocus (keyup)="getFilter($event)">
+        </form>
+    </div>
+
+    <div class="">
+
+        <div class="d-flex justify-content-center">
+            <div class="col-md-10">
+
+                <ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center my-4">
+            <div class="col-md-8">
+                <ap-load-button 
+                (click)="load()"
+                [hasMore]="hasMore"></ap-load-button>
+            </div>
+        </div>
+        
+    </div>
+
+
+</div>    
 

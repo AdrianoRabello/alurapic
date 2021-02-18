@@ -23,7 +23,7 @@ export class PhotoListResolver implements Resolve<Observable<Photo[]>> {
         
         const userName = route.params.userName;
 
-        return this.service.listFromUserName(userName);
+        return this.service.listFromUsernamePaginated(userName,1);
     }
 
 }
