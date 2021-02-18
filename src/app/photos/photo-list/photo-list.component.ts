@@ -1,9 +1,7 @@
-import { PhotoService } from './../photo/photo.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 import { Photo } from '../photo/photo';
+import { PhotoService } from './../photo/photo.service';
 
 
 @Component({
@@ -15,8 +13,9 @@ export class PhotoListComponent implements OnInit, OnDestroy {
 
 
   photos: Photo[] = [];
-  filter: string = '';
-  debounce: Subject<string> = new Subject<string>();
+
+  filter:string = '';
+
   hasMore: boolean = true;
   currentPage: number = 1;
   username: string = '';
@@ -37,25 +36,17 @@ export class PhotoListComponent implements OnInit, OnDestroy {
 
   }
 
-  getFilter($event: any) {
 
-    //this.filter = $event.target.value;
-    this.debounce.next($event.target.value)
-    this.debounce
-      .pipe(debounceTime(400)) // debounce time make delay with parametter passed
-      .subscribe((filter) => {
-        this.filter = filter
-      })
-  }
 
   ngOnDestroy(): void {
 
-    this.debounce.subscribe();
+
   }
 
   load() {
     this.photoService.listFromUsernamePaginated(this.username, ++this.currentPage).subscribe((photos: Photo[]) => {
 
+      this.filter = '';
       this.photos = this.photos.concat(photos);
 
       if (photos.length)

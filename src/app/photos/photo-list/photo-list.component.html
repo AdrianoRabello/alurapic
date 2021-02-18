@@ -3,11 +3,10 @@
 <div class="container-fluid">
 
     <div class="text-center my-3">
-        <form action="">
-            <i aria-hidden="true" class="fa fa-search mr-2"></i>
-            <input type="search" class="rounded" placeholder="search" autofocus (keyup)="getFilter($event)">
-        </form>
+
+        <ap-search (onTyping) = "filter = $event" [value]="filter"></ap-search>
     </div>
+
 
     <div class="">
 

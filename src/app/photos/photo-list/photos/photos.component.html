@@ -6,9 +6,10 @@
 
     <li class="row no-gutters" *ngFor="let cols of rows ">
 
-        <div *ngFor="let photo of cols" class="col-4 my-2">
+        <!-- this brightness id input properties in directive. A set value inside directive  -->
+        <div *ngFor="let photo of cols" class="col-4 my-2" apDarkerOnHover brightness="95%">
 
-            <ap-card [title]="photo.description">
+            <ap-card [title]="photo.description"  >
 
                 <ap-photo [url]="photo.url" [description]="photo.description"></ap-photo>
 
